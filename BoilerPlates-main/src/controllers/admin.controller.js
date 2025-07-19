@@ -32,6 +32,7 @@ export const getAllRecruiter = async (req, res) => {
     }));
 
     res.status(200).json({ success: true, recruiters: formatted });
+    
   } catch (err) {
     res.status(500).json({ success: false, message: "Error fetching recruiters", error: err.message });
   }

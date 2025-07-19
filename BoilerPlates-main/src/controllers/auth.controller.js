@@ -6,7 +6,13 @@ import User from "../models/user.model.js"
 
 // REGISTER
 export const register = async (req, res) => {
-  try {
+  try{
+    const uploadFile = req.file;//coming from multer
+
+    const userData = {
+      ...req.body,
+      resume: uploadFile?.filename || null, //or uploaded?.path
+    };
     const { user, token } = await registerUserService(req.body);
 
     res.cookie("token", token, {
